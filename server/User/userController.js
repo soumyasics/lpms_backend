@@ -291,6 +291,32 @@ const editUserById =async (req, res) => {
 };
 
 
+// View all Users
+const viewUsers = (req, res) => {
+  Users.find()
+      .exec()
+      .then(data => {
+          if (data.length > 0) {
+              res.json({
+                  status: 200,
+                  msg: "Data obtained successfully",
+                  data: data
+              });
+          } else {
+              res.json({
+                  status: 200,
+                  msg: "No Data obtained"
+              });
+          }
+      })
+      .catch(err => {
+          res.status(500).json({
+              status: 500,
+              msg: "Data not obtained",
+              Error: err
+          });
+      });
+};
 
 module.exports = {
   registerUser,
@@ -298,7 +324,7 @@ module.exports = {
   editUserById,
   login,
   forgotPassword,
-  viewUserById,
+  viewUsers,
   deleteUserById,
   resetPassword,
   upload,

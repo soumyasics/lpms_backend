@@ -36,7 +36,11 @@ const userSchema=mongoose.Schema({
     imgUrl:{
         type:String
 
-    }
+    },
+    isActive:{
+        type:Boolean,
+        default:true
+    },
 });
 module.exports=mongoose.model('users',userSchema)
 
